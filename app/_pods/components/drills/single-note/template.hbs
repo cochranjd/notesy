@@ -1,0 +1,11 @@
+<div>
+  <h1>Interval</h1>
+</div>
+<div>
+  {{#if config.withRoot}}
+    <h1 style="font-size: 30vmin;">{{root}}</h1>
+    <h1 style="font-size: 20vmin;">{{selectedInterval}} <span style="font-size: 10vmin;">({{selectedIntervalKey}})</span></h1>
+  {{else}}
+    <h1 style="font-size: 60vmin;">{{selectedInterval}}</h1>
+  {{/if}}
+</div>

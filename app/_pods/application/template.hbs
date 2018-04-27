@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="position-absolute" style="right: 20px;top: 10px;">
+    <h1>{{remainingTimeSeconds}}</h1>
+    <canvas width="500" height="25">
+    </canvas> 
+    {{#power-select
+      options=roots
+      placeholder="Global Root"
+      selected=globalRoot
+      searchEnabled=false
+      allowClear=true
+      onchange=(action "selectedGlobalRoot") as |rootOption|}}
+      {{rootOption}}
+    {{/power-select}}
+  </div>
+
+  <div class="row">
+    <div class="col-9">
+      <div class="row">
+        {{#each availableComponents as |availableComponent|}}
+          <div class="form-check form-check-inline">
+            <label>
+              {{input type="checkbox" class="form-check-input" checked=availableComponent.active}}
+              <a class="{{concat availableComponent.name '-link'}}" href="javascript:void;" {{action "showConfiguration" availableComponent.key}}>
+                {{availableComponent.name}}
+              </a>
+            </label>
+          </div>
+        {{/each}}
+      </div>
+      <div class="row">
+        {{#each availableComponents as |availableComponent|}}
+          <div class="col-sm {{unless (eq availableComponent.key activeConfiguration) 'd-none'}}">
+            {{component
+              availableComponent.config 
+              config=(get configs availableComponent.key)
+              onChange=(action "configChanged" availableComponent.key)
+              onDurationChange=(action "durationChanged" availableComponent.key)}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    {{#each availableComponents as |availableComponent|}}
+    {{/each}}
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      {{#if activeComponentName}}
+        {{component
+          activeComponentName
+          globalRoot=globalRoot
+          config=(get configs activeComponentKey)
+          onStart=(action "startComponent")}}
+      {{/if}}
+    </div>
+  </div>
+</div>

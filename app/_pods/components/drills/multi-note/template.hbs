@@ -1,0 +1,13 @@
+<div>
+  <h1>Series</h1>
+</div>
+<div>
+  {{#if config.withRoot}}
+    <h1 style="font-size: 30vmin;">{{root}}</h1>
+    <h1 style="font-size: 10vmin;">
+    {{start}} <span style="font-size: 6vmin;">({{startKey}})</span> - 
+    {{end}} <span style="font-size: 6vmin;">({{endKey}})</span></h1>
+  {{else}}
+    <h1 style="font-size: 40vmin;">{{start}} - {{end}}</h1>
+  {{/if}}
+</div>

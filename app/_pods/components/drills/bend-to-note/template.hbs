@@ -1,0 +1,11 @@
+<div>
+  <h1>Bend</h1>
+</div>
+<div>
+  {{#if config.withRoot}}
+    <h1 style="font-size: 30vmin;">{{root}}</h1>
+    <h1 style="font-size: 8vmin;">{{selectedStep}} <span style="font-size: 6vmin;">({{selectedStepKey}})</span></h1>
+  {{else}}
+    <h1 style="font-size: 20vmin;">{{selectedStep}}</h1>
+  {{/if}}
+</div>

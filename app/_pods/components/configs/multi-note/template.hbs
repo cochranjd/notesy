@@ -1,0 +1,30 @@
+<div class="col-sm">
+  <div class="form-group w-50">
+    {{concat secondsStr " seconds"}}
+    {{range-slider start=config.duration connect="lower" step=step range=range on-slide="durationChanged"}}
+  </div>
+  <div class="form-check">
+    <label>
+      {{input type="checkbox" class="form-check-input" checked=config.crossOctave}}
+      Cross Octaves
+    </label>
+  </div>
+  <div class="form-check">
+    <label>
+      {{input type="checkbox" class="form-check-input" checked=config.nonMajors}}
+      Non-Majors
+    </label>
+  </div>
+  <div class="form-check">
+    <label>
+      {{input type="checkbox" class="form-check-input" checked=config.withRoot}}
+      With Root
+    </label>
+  </div>
+  <div class="form-check">
+    <label>
+      {{input type="checkbox" class="form-check-input" checked=config.nonMajorRoots}}
+      Non-Major Roots
+    </label>
+  </div>
+</div>

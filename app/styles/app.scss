@@ -1,0 +1,20 @@
+.bend-to-note,
+a.bend-to-note-link {
+  color: #dff280;
+}
+
+.single-note,
+a.single-note-link {
+  color: #0085cd;
+}
+
+.multi-note,
+a.multi-note-link {
+  color: #fd6a02;
+}
+
+$ember-power-select-border-color: #64A5ED;
+$ember-power-select-border-radius: 5;
+
+@import 'ember-power-select';
+@import "ember-bootstrap/bootstrap";
