@@ -5,9 +5,15 @@ import { later, next } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import d3 from 'npm:d3';
 
+const CANVAS_WIDTH = 1000;
+const CANVAS_HEIGHT = 50;
+
 const ACTIVE_MODULES_KEY = 'activeModules';
 
 export default Controller.extend({
+  canvasWidth: CANVAS_WIDTH,
+  canvasHeight: CANVAS_HEIGHT,
+
   activeComponent: null,
 
   activeConfiguration: 'single',
@@ -78,17 +84,6 @@ export default Controller.extend({
     }
   }).readOnly(),
 
-  remainingTimeSeconds: computed('remainingTime', {
-    get() {
-      const remainingTime = get(this, 'remainingTime');
-      if (remainingTime) {
-        return (remainingTime / 1000.0).toFixed(2);
-      } else {
-        null;
-      }
-    }
-  }).readOnly(),
-
   init() {
     set(this, 'configs', EmberObject.create());
     this.loadPrefs();
@@ -98,15 +93,16 @@ export default Controller.extend({
   },
 
   drawRect(width) {
-    this.context.clearRect(0, 0, 500, 25);
-    this.context.fillStyle = '#8888ee';
+    this.context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+    this.context.fillStyle = 'rgba(70, 130, 180, 0.5)';
     this.context.beginPath();
-    this.context.rect(0, 0, width, 25);
+    this.context.rect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     this.context.fill();
 
-    this.context.fillStyle = '#8888ee50';
+    this.context.fillStyle = 'rgba(70, 130, 180, 1)';
     this.context.beginPath();
-    this.context.rect(0, 0, 500, 25);
+    this.context.rect(0, 0, width, CANVAS_HEIGHT);
     this.context.fill();
   },
 
@@ -121,7 +117,7 @@ export default Controller.extend({
     } else {
       const remaining = (this.duration - delta);
       set(this, 'remainingTime', remaining);
-      this.drawRect((1.0 * (remaining/this.duration))*500);
+      this.drawRect((1.0 * (remaining/this.duration))*CANVAS_WIDTH);
       later(this, this.updateTick, 10);
     }
   },

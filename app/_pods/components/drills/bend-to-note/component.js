@@ -4,7 +4,7 @@ import { later } from '@ember/runloop';
 import DrillSupportMixin from 'notesy/mixins/drill-support';
 
 export default Component.extend(DrillSupportMixin, {
-  classNames: ['row', 'bend-to-note'],
+  classNames: ['row', 'w-100', 'bend-to-note'],
 
   stepSizes: ['1/2 Step', 'Whole Step'],
 

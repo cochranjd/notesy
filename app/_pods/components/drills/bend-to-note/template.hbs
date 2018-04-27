@@ -1,11 +1,17 @@
-<div>
-  <h1>Bend</h1>
-</div>
-<div>
+<div class="col-12 d-flex justify-content-flex-start w-100">
+  <div>
+    <h1>Bend</h1>
+  </div>
   {{#if config.withRoot}}
-    <h1 style="font-size: 30vmin;">{{root}}</h1>
-    <h1 style="font-size: 8vmin;">{{selectedStep}} <span style="font-size: 6vmin;">({{selectedStepKey}})</span></h1>
+    <div>
+      <h1 style="font-size: 30vmin;">{{root}}</h1>
+    </div>
+    <div>
+      <h1 style="font-size: 8vmin;">{{selectedStep}} <span style="font-size: 6vmin;">({{selectedStepKey}})</span></h1>
+    </div>
   {{else}}
-    <h1 style="font-size: 20vmin;">{{selectedStep}}</h1>
+    <div>
+      <h1 style="font-size: 20vmin;">{{selectedStep}}</h1>
+    </div>
   {{/if}}
 </div>

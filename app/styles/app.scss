@@ -1,3 +1,22 @@
+.activeConfig {
+  background-color: rgba(70, 130, 180, 0.3);
+}
+
+.config-checkbox label {
+  padding: 10px;
+}
+
+.config-component {
+  padding: 20px;
+}
+
+.notesy-progress-bar {
+  margin: 0 0 15px 0;
+  padding: 0;
+  width: 100%;
+  height: 45px;
+}
+
 .bend-to-note,
 a.bend-to-note-link {
   color: #dff280;
