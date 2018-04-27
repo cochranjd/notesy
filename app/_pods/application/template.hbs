@@ -20,7 +20,7 @@
         {{#each availableComponents as |availableComponent|}}
           <div class="form-check form-check-inline">
             <label>
-              {{input type="checkbox" class="form-check-input" checked=availableComponent.active}}
+              <input type="checkbox" class="form-check-input" checked={{availableComponent.active}} onchange={{action "activeComponentChanged" availableComponent.key}} />
               <a class="{{concat availableComponent.name '-link'}}" href="javascript:void;" {{action "showConfiguration" availableComponent.key}}>
                 {{availableComponent.name}}
               </a>

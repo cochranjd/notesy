@@ -2,12 +2,17 @@ import Controller from '@ember/controller';
 import EmberObject, { get, set, computed } from '@ember/object';
 import { filterBy } from '@ember/object/computed';
 import { later, next } from '@ember/runloop';
+import { inject as service } from '@ember/service';
 import d3 from 'npm:d3';
+
+const ACTIVE_MODULES_KEY = 'activeModules';
 
 export default Controller.extend({
   activeComponent: null,
 
   activeConfiguration: 'single',
+
+  prefs: service(),
 
   configs: null,
 
@@ -86,6 +91,7 @@ export default Controller.extend({
 
   init() {
     set(this, 'configs', EmberObject.create());
+    this.loadPrefs();
     next(this, () => {
       this.register();
     });
@@ -120,6 +126,26 @@ export default Controller.extend({
     }
   },
 
+  loadPrefs() {
+    const prefs = get(this, 'prefs');
+
+    const activeModules = prefs.load(ACTIVE_MODULES_KEY);
+    if (activeModules) {
+      const components = get(this, 'components');
+      components.forEach(c => {
+        c.active = activeModules.includes(c.key);
+      });
+    }
+  },
+
+  savePrefs() {
+    const components = get(this, 'availableComponents');
+    const activeModules = components.filterBy('active', true).mapBy('key');
+
+    const prefs = get(this, 'prefs');
+    prefs.save(ACTIVE_MODULES_KEY, activeModules);
+  },
+
   actions: {
     startComponent(duration) {
       this.startTime = (new Date()).getTime();
@@ -140,6 +166,16 @@ export default Controller.extend({
 
     showConfiguration(val) {
       set(this, 'activeConfiguration', val);
+    },
+
+    activeComponentChanged(componentKey, evt) {
+      const isChecked = evt.target.checked;
+      const availableComponents = get(this, 'availableComponents');
+      const component = availableComponents.findBy('key', componentKey);
+      if (component) {
+        set(component, 'active', isChecked);
+      }
+      this.savePrefs();
     }
   }
 });
