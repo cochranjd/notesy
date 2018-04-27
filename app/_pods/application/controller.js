@@ -25,7 +25,7 @@ export default Controller.extend({
   roots: null,
   components: null,
 
-  globalRoot: 'C',
+  globalRoot: null,
 
   availableComponents: computed('components', {
     get() {
@@ -86,7 +86,8 @@ export default Controller.extend({
     set(this, 'components', [
       { key: 'single', component: 'single-note', active: true },
       { key: 'multi', component: 'multi-note', active: false },
-      { key: 'bend', component: 'bend-to-note', active: false }];
+      { key: 'bend', component: 'bend-to-note', active: false },
+      { key: 'scale', component: 'play-scale', active: false }]);
 
     set(this, 'configs', EmberObject.create());
     this.loadPrefs();

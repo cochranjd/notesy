@@ -24,6 +24,9 @@ export default Mixin.create({
     }
   }).readOnly(),
 
+  majorRoots: MAJOR_ROOTS,
+  allRoots: ROOTS,
+
   roots: computed('config.nonMajorRoots', {
     get() {
       const nonMajorRoots = get(this, 'config.nonMajorRoots');
@@ -32,6 +35,9 @@ export default Mixin.create({
         MAJOR_ROOTS;
     }
   }).readOnly(),
+
+  majorInvervals: MAJOR_INTERVALS,
+  allIntervals: INTERVALS,
 
   intervals: computed('config.nonMajors', {
     get() {

@@ -1,0 +1,21 @@
+<div class="col-12">
+  <div class="row">
+    <div class="col-12">
+      <div>
+        <h1>{{scaleName}}</h1>
+      </div>
+      <div>
+        <h1 style="font-size: 20vmin;">{{root}}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div style="display: flex; justify-content: center;">
+        {{#each notes as |note|}}
+          <div style="font-size: 10vmin;margin: 20px;">{{note}}</div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
