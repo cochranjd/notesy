@@ -1,9 +1,19 @@
 import Mixin from '@ember/object/mixin';
 import EmberObject, { set, get, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { next } from '@ember/runloop';
 
 export default Mixin.create({
   defaults: {},
+
+  serializeConfig(config) {
+    const defaults = get(this, 'defaults');
+    return config.getProperties(Object.keys(defaults));
+  },
+
+  prefsKey: null,
+
+  prefs: service(),
 
   config: null,
 
@@ -16,15 +26,22 @@ export default Mixin.create({
 
   init() {
     this._super(...arguments);
-    const defaults = get(this, 'defaults');
-    set(this, 'config', defaults);
+    let defaults = get(this, 'defaults');
+
+    const prefsKey = get(this, 'prefsKey');
+    if (prefsKey) {
+      const savedPrefs = get(this, 'prefs').load(prefsKey);
+      defaults = Object.assign(defaults, savedPrefs);
+    }
+
+    set(this, 'config', EmberObject.create(defaults));
   },
 
   didInsertElement() {
     this._super(...arguments);
     next(this, () => {
-      const defaults = get(this, 'defaults');
-      this.attrs.onChange(EmberObject.create(defaults));
+      const config = get(this, 'config');
+      this.saveAndNotifyConfig(config);
     });
   },
 
@@ -42,9 +59,23 @@ export default Mixin.create({
     }
   }).readOnly(),
 
+  saveAndNotifyConfig(config) {
+    this.attrs.onChange(config);
+    const prefsKey = get(this, 'prefsKey');
+    get(this, 'prefs').save(prefsKey, this.serializeConfig(config));
+  },
+
   actions: {
     durationChanged(value) {
-      this.attrs.onDurationChange(value);
+      const config = get(this, 'config');
+      config.set('duration', value);
+      this.saveAndNotifyConfig(config);
+    },
+
+    configChanged(key, evt) {
+      const config = get(this, 'config');
+      config.set(key, evt.target.checked);
+      this.saveAndNotifyConfig(config);
     }
   }
 });

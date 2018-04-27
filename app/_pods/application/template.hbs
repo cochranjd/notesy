@@ -33,9 +33,9 @@
           <div class="col-sm {{unless (eq availableComponent.key activeConfiguration) 'd-none'}}">
             {{component
               availableComponent.config 
+              prefsKey=availableComponent.key
               config=(get configs availableComponent.key)
-              onChange=(action "configChanged" availableComponent.key)
-              onDurationChange=(action "durationChanged" availableComponent.key)}}
+              onChange=(action "configChanged" availableComponent.key)}}
           </div>
         {{/each}}
       </div>

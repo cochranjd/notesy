@@ -5,25 +5,25 @@
   </div>
   <div class="form-check">
     <label>
-      {{input type="checkbox" class="form-check-input" checked=config.crossOctave}}
+      <input type="checkbox" class="form-check-input" checked={{config.crossOctave}} onchange={{action "configChanged" "crossOctave"}} />
       Cross Octaves
     </label>
   </div>
   <div class="form-check">
     <label>
-      {{input type="checkbox" class="form-check-input" checked=config.nonMajors}}
+      <input type="checkbox" class="form-check-input" checked={{config.nonMajors}} onchange={{action "configChanged" "nonMajors"}} />
       Non-Majors
     </label>
   </div>
   <div class="form-check">
     <label>
-      {{input type="checkbox" class="form-check-input" checked=config.withRoot}}
+      <input type="checkbox" class="form-check-input" checked={{config.withRoot}} onchange={{action "configChanged" "withRoot"}} />
       With Root
     </label>
   </div>
   <div class="form-check">
     <label>
-      {{input type="checkbox" class="form-check-input" checked=config.nonMajorRoots}}
+      <input type="checkbox" class="form-check-input" checked={{config.nonMajorRoots}} onchange={{action "configChanged" "nonMajorRoots"}} />
       Non-Major Roots
     </label>
   </div>

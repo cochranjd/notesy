@@ -5,7 +5,7 @@
   </div>
   <div class="form-check">
     <label>
-      {{input type="checkbox" class="form-check-input" checked=config.withRoot}}
+      <input type="checkbox" class="form-check-input" checked={{config.withRoot}} onchange={{action "configChanged" "withRoot"}} />
       With Root
     </label>
   </div>

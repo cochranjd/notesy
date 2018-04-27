@@ -134,11 +134,6 @@ export default Controller.extend({
       set(configs, componentName, config);
     },
 
-    durationChanged(componentName, duration) {
-      const configs = get(this, 'configs');
-      get(configs, componentName).duration = duration;
-    },
-
     selectedGlobalRoot(root) {
       set(this, 'globalRoot', root);
     },
