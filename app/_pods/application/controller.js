@@ -22,14 +22,10 @@ export default Controller.extend({
 
   configs: null,
 
-  roots: ['Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G'],
+  roots: null,
+  components: null,
 
   globalRoot: 'C',
-
-  components: [
-    { key: 'single', component: 'single-note', active: true },
-    { key: 'multi', component: 'multi-note', active: false },
-    { key: 'bend', component: 'bend-to-note', active: false }],
 
   availableComponents: computed('components', {
     get() {
@@ -52,7 +48,7 @@ export default Controller.extend({
     set(this, 'activeComponent', null);
   },
 
-  register(duration) {
+  register() {
     next(this, () => {
       const components = get(this, 'activeComponents');
       const active = components[Math.floor(Math.random() * components.length)];
@@ -85,6 +81,13 @@ export default Controller.extend({
   }).readOnly(),
 
   init() {
+    this._super(...arguments);
+    set(this, 'roots', ['Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G']);
+    set(this, 'components', [
+      { key: 'single', component: 'single-note', active: true },
+      { key: 'multi', component: 'multi-note', active: false },
+      { key: 'bend', component: 'bend-to-note', active: false }];
+
     set(this, 'configs', EmberObject.create());
     this.loadPrefs();
     next(this, () => {

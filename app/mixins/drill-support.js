@@ -10,7 +10,7 @@ export default Mixin.create({
   didInsertElement() {
     this._super(...arguments);
     const duration = get(this, 'config.duration');
-    this.attrs.onStart(duration * 10);
+    this.onStart(duration * 10);
   },
 
   root: computed('selectedRoot', 'globalRoot', {

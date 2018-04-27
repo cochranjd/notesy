@@ -60,7 +60,7 @@ export default Mixin.create({
   }).readOnly(),
 
   saveAndNotifyConfig(config) {
-    this.attrs.onChange(config);
+    this.onChange(config);
     const prefsKey = get(this, 'prefsKey');
     get(this, 'prefs').save(prefsKey, this.serializeConfig(config));
   },

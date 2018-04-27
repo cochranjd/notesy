@@ -1,6 +1,5 @@
 import Component from '@ember/component';
-import { get, set, computed } from '@ember/object';
-import { later } from '@ember/runloop';
+import { get, set } from '@ember/object';
 import DrillSupportMixin from 'notesy/mixins/drill-support';
 
 export default Component.extend(DrillSupportMixin, {
@@ -13,7 +12,6 @@ export default Component.extend(DrillSupportMixin, {
 
   didInsertElement() {
     const intervals = get(this, 'intervals');
-    const timeInHundredths = get(this, 'config.duration');
 
     const crossOctave = get(this, 'config.crossOctave');
     let start = 0;

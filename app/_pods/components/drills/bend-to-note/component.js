@@ -1,12 +1,11 @@
 import Component from '@ember/component';
-import { get, set, computed } from '@ember/object';
-import { later } from '@ember/runloop';
+import { get, set } from '@ember/object';
 import DrillSupportMixin from 'notesy/mixins/drill-support';
 
 export default Component.extend(DrillSupportMixin, {
   classNames: ['row', 'w-100', 'bend-to-note'],
 
-  stepSizes: ['1/2 Step', 'Whole Step'],
+  stepSizes: null,
 
   stepSize: null,
 
@@ -14,10 +13,12 @@ export default Component.extend(DrillSupportMixin, {
 
   timeInMs: 4000,
 
+  init() {
+    this._super(...arguments);
+    set(this, 'stepSizes', ['1/2 Step', 'Whole Step']);
+  },
+
   didInsertElement() {
-    const intervals = get(this, 'intervals');
-    const timeInHundredths = get(this, 'config.duration');
-   
     const stepIdx = Math.floor(Math.random() * 2);
     const selectedStepSize = get(this, 'stepSizes')[stepIdx];
     set(this, 'selectedStep', selectedStepSize);

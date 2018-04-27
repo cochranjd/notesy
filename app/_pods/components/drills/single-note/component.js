@@ -1,6 +1,5 @@
 import Component from '@ember/component';
-import { get, set, computed } from '@ember/object';
-import { later } from '@ember/runloop';
+import { get, set } from '@ember/object';
 import DrillSupportMixin from 'notesy/mixins/drill-support';
 
 export default Component.extend(DrillSupportMixin, {
