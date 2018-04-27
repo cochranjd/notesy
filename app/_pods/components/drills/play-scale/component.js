@@ -36,7 +36,7 @@ export default Component.extend(DrillSupportMixin, {
       const scales = get(this, 'scales');
       const scale = scales[Math.floor(Math.random() * scales.length)];
 
-      const roots = get(this, 'allRoots');
+      const roots = get(this, 'roots');
       const selectedRoot = roots[Math.floor(Math.random() * roots.length)];
       set(this, 'selectedRoot', selectedRoot);
 

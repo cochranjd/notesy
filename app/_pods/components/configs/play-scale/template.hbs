@@ -5,6 +5,12 @@
   </div>
   <div class="form-check">
     <label>
+      <input type="checkbox" class="form-check-input" checked={{config.nonMajorRoots}} onchange={{action "configChanged" "nonMajorRoots"}} />
+      Non-Major Roots
+    </label>
+  </div>
+  <div class="form-check">
+    <label>
       <input type="checkbox" class="form-check-input" checked={{config.includeMajor}} onchange={{action "configChanged" "includeMajor"}} />
       Include Major
     </label>

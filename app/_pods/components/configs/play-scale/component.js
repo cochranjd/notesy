@@ -6,6 +6,7 @@ export default Component.extend(ConfigMixin, {
 
   defaults: {
     duration: 500,
+    nonMajorRoots: false,
     includeMajor: true,
     includeMinor: false,
   },
