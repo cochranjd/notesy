@@ -28,9 +28,9 @@ export default Component.extend(DrillSupportMixin, {
     return str.charAt(0).toUpperCase() + str.slice(1);
   },
 
-  _pattern: computed('config.withPattern', {
+  _pattern: computed('config.withPatterns', {
     get() {
-      if (get(this, 'config.withPattern')) {
+      if (get(this, 'config.withPatterns')) {
         const _patterns = get(this, '_patterns');
         return _patterns[Math.floor(Math.random() * _patterns.length)];
       }

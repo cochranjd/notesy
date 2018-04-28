@@ -6,10 +6,10 @@ export default Component.extend(ConfigMixin, {
   classNames: ['row', 'bend-to-note-config'],
 
   init() {
-    this._super(...arguments);
     set(this, 'defaults', {
       duration: 500,
       withRoot: true
     });
+    this._super(...arguments);
   }
 });

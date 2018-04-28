@@ -1,21 +1,19 @@
 <div class="col-12">
   <div class="row">
-    <div class="col-12">
+    <div class="w-100" style="display: flex;align-items: center;justify-content: space-around;">
       <div>
         <h1>{{scaleName}}</h1>
       </div>
       <div>
         <h1 style="font-size: 20vmin;">{{root}}</h1>
       </div>
+      {{#if pattern}}
+        <div>
+          <h1 style="font-size: 5vmin;">{{pattern}}</h1>
+        </div>
+      {{/if}}
     </div>
   </div>
-  {{#if pattern}}
-    <div class="row">
-      <div class="col-12">
-        {{pattern}}
-      </div>
-    </div>
-  {{/if}}
   <div class="row">
     <div class="col-12">
       <div style="display: flex; justify-content: center;">

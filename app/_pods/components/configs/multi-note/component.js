@@ -6,7 +6,6 @@ export default Component.extend(ConfigMixin, {
   classNames: ['row', 'multi-note-config'],
 
   init() {
-    this._super(...arguments);
     set(this, 'defaults', {
       duration: 500,
       crossOctave: false,
@@ -14,5 +13,6 @@ export default Component.extend(ConfigMixin, {
       withRoot: true,
       nonMajorRoots: false
     });
+    this._super(...arguments);
   }
 });
