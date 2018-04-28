@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { next } from '@ember/runloop';
 
 export default Mixin.create({
-  defaults: {},
+  defaults: null,
 
   serializeConfig(config) {
     const defaults = get(this, 'defaults');
