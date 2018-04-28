@@ -1,7 +1,7 @@
 import Mixin from '@ember/object/mixin';
 import { get, computed } from '@ember/object';
 
-const ROOTS = ['Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G'];
+const ROOTS = ['Ab/G#', 'A', 'Bb/A#', 'B', 'C', 'Db/C#', 'D', 'Eb/D#', 'E', 'F', 'Gb/F#', 'G'];
 const MAJOR_ROOTS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const INTERVALS = ['b2', '2', 'b3', '3', '4', 'b5', '5', 'b6', '6', 'b7', '7', '8'];
 const MAJOR_INTERVALS = ['2', '3', '4', '5', '6', '7', '8'];

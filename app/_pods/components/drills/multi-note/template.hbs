@@ -1,20 +1,18 @@
-<div class="col-12 d-flex justify-content-flex-start w-100">
-  <div>
-    <h1>Series</h1>
-  </div>
+<div class="col-12 d-flex justify-content-flex-center w-100">
   {{#if config.withRoot}}
-    <div>
-      <h1 style="font-size: 30vmin;">{{root}}</h1>
-    </div>
-    <div>
-      <h1 style="font-size: 10vmin;">
-        {{start}} <span style="font-size: 6vmin;">({{startKey}})</span> - 
-        {{end}} <span style="font-size: 6vmin;">({{endKey}})</span>
-      </h1>
+    <div class="d-flex justify-content-flex-center align-items-center flex-column w-100">
+      <div>
+        <h1 style="font-size: 30vmin;">{{root}}</h1>
+      </div>
+      <div>
+        <h1 style="font-size: 10vmin;">
+          {{start}}/{{startKey}} - {{end}}/{{endKey}}
+        </h1>
+      </div>
     </div>
   {{else}}
     <div>
-      <h1 style="font-size: 40vmin;">{{start}} - {{end}}</h1>
+      <h1 style="font-size: 30vmin;">{{start}} - {{end}}</h1>
     </div>
   {{/if}}
 </div>

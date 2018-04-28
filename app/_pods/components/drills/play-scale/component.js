@@ -58,6 +58,7 @@ export default Component.extend(DrillSupportMixin, {
   timeInMs: 5000,
 
   didInsertElement() {
+    try {
     const scales = get(this, 'scales');
     const scale = scales[Math.floor(Math.random() * scales.length)];
 
@@ -66,9 +67,8 @@ export default Component.extend(DrillSupportMixin, {
     set(this, 'selectedRoot', selectedRoot);
 
     const root = get(this, 'root');
-    const rootIdx = roots.indexOf(root);
-
     const allRoots = get(this, 'allRoots');
+    const rootIdx = allRoots.indexOf(root);
 
     let currentPosition = rootIdx;
     const notes = scale.form.map((interval) => {
@@ -81,6 +81,9 @@ export default Component.extend(DrillSupportMixin, {
     set(this, 'scaleName', scale.name);
 
     set(this, 'pattern', get(this, '_pattern'));
+    } catch(e) {
+      console.log(e);
+    }
     this._super(...arguments);
   }
 });
