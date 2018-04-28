@@ -68,10 +68,12 @@ export default Component.extend(DrillSupportMixin, {
     const root = get(this, 'root');
     const rootIdx = roots.indexOf(root);
 
+    const allRoots = get(this, 'allRoots');
+
     let currentPosition = rootIdx;
     const notes = scale.form.map((interval) => {
-      currentPosition = (currentPosition + interval) % roots.length;
-      return roots[currentPosition];
+      currentPosition = (currentPosition + interval) % allRoots.length;
+      return allRoots[currentPosition];
     });
     notes.unshift(root);
 
