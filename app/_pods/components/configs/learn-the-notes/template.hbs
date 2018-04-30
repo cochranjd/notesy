@@ -1,0 +1,20 @@
+<div class="col-sm">
+  <div class="form-group w-50">
+    {{concat secondsStr " seconds"}}
+    {{range-slider start=config.duration connect="lower" step=step range=range on-slide="durationChanged"}}
+  </div>
+  <div class="form-check">
+    <label>
+      <input type="checkbox" class="form-check-input" checked={{config.nonMajorRoots}} onchange={{action "configChanged" "nonMajorRoots"}} />
+      Non-Major Roots
+    </label>
+  </div>
+  {{#each _strings as |_string|}}
+    <div class="form-check">
+      <label>
+        <input type="checkbox" class="form-check-input" checked={{item-in config.strings _string}} onchange={{action "stringChanged" _string}} />
+        String {{_string}}
+      </label>
+    </div>
+  {{/each}}
+</div>

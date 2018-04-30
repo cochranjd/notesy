@@ -68,7 +68,7 @@ export default Mixin.create({
   actions: {
     durationChanged(value) {
       const config = get(this, 'config');
-      config.set('duration', value);
+      config.set('duration', parseInt(value));
       this.saveAndNotifyConfig(config);
     },
 

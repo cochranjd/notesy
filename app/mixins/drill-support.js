@@ -5,6 +5,7 @@ const ROOTS = ['Ab/G#', 'A', 'Bb/A#', 'B', 'C', 'Db/C#', 'D', 'Eb/D#', 'E', 'F',
 const MAJOR_ROOTS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const INTERVALS = ['b2', '2', 'b3', '3', '4', 'b5', '5', 'b6', '6', 'b7', '7', '8'];
 const MAJOR_INTERVALS = ['2', '3', '4', '5', '6', '7', '8'];
+const STRINGS = ['1', '2', '3', '4', '5', '6'];
 
 export default Mixin.create({
   didInsertElement() {
@@ -12,6 +13,8 @@ export default Mixin.create({
     const duration = get(this, 'config.duration');
     this.onStart(duration * 10);
   },
+
+  strings: STRINGS,
 
   root: computed('selectedRoot', 'globalRoot', {
     get() {

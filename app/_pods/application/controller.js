@@ -87,7 +87,8 @@ export default Controller.extend({
       { key: 'single', component: 'single-note', active: true },
       { key: 'multi', component: 'multi-note', active: false },
       { key: 'bend', component: 'bend-to-note', active: false },
-      { key: 'scale', component: 'play-scale', active: false }]);
+      { key: 'scale', component: 'play-scale', active: false },
+      { key: 'learnthenotes', component: 'learn-the-notes', active: false }]);
 
     set(this, 'configs', EmberObject.create());
     this.loadPrefs();
@@ -174,6 +175,9 @@ export default Controller.extend({
       const component = availableComponents.findBy('key', componentKey);
       if (component) {
         set(component, 'active', isChecked);
+      }
+      if (this.duration === null) {
+        this.register();
       }
       this.savePrefs();
     }
